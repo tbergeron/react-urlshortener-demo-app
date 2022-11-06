@@ -1,0 +1,24 @@
+.top-nav-bar {
+}
+
+.top-nav-bar a.navbar-brand img {
+  width: 80%;
+}
+
+.top-nav-bar a.nav-link {
+  color: #9a9a9e;
+  font-weight: bold;
+}
+
+.top-nav-bar a.btn-primary {
+  background-color: #2bd1d0;
+  border-color: #2bd1d0;
+  color: white;
+}
+
+.top-nav-bar a.btn-primary:active,
+.top-nav-bar a.btn-primary:focus,
+.top-nav-bar a.btn-primary:hover {
+  background-color: #22a8a8;
+  border-color: #22a8a8;
+}

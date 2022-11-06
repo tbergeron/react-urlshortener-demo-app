@@ -1,0 +1,21 @@
+.shortener-form {
+  background-image: linear-gradient(rgba(56, 48, 82, 0.9), rgba(56, 48, 82, 0.9)), url('images/bg-shorten-desktop.svg');
+  color: white;
+  padding: 30px;
+}
+
+.shortener-form input {
+
+}
+
+.shortener-form button {
+  background-color: #2bd1d0;
+  border-color: #2bd1d0;
+}
+
+.shortener-form button:active,
+.shortener-form button:focus,
+.shortener-form button:hover {
+  background-color: #22a8a8 !important;
+  border-color: #22a8a8 !important;
+}
