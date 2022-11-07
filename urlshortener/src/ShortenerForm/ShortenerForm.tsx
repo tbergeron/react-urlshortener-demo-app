@@ -1,32 +1,54 @@
 import { useForm } from "react-hook-form";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './ShortenerForm.css';
+import { usePersistentStorageValue } from '../LocalStorage';
 
 const API_BASE = 'https://api.shrtco.de/v2/';
 
-type ShortUrl = {
+// component state
+type ShortenerFormState = {
+  shortUrls: Array<ShortUrl>;
+}
+
+// initial state before loading from local storage
+let shortenerFormState: ShortenerFormState = {
+  shortUrls: []
+}
+
+type ShortUrlRequest = {
   url: string;
 };
 
+type ShortUrl = {
+  originalLink: string;
+  shortUrl: string;
+  code: string;
+}
+
 export function ShortenerForm() {
-  const { register, handleSubmit, formState: { errors } } = useForm<ShortUrl>();
+  const [state, setState] = usePersistentStorageValue("short-urls", shortenerFormState);
+  const { register, handleSubmit, formState: { errors } } = useForm<ShortUrlRequest>();
+  const buildUrl = (uri: String) => API_BASE + uri;
 
-  const buildUrl = (uri:String) => API_BASE + uri;
+  console.log('initialState:', state);
 
-  const onSubmit = (data: ShortUrl): void => {
-    alert('FUCK ' + JSON.stringify(data));
-    console.log(data);
-  };
-
-  const createShortenedUrl = async () => {
+  const createShortenedUrl = async (shortUrlRequest: ShortUrlRequest) => {
+    console.log('Sending request to API:', shortUrlRequest);
     try {
-      let res = await fetch(buildUrl('/shorten'), {
-        method: 'POST',
-        body: JSON.stringify({/* TODO */}),
-      });
+      let res = await fetch(buildUrl('shorten?url=' + shortUrlRequest.url));
       let resJson = await res.json();
-      if (res.status === 200) {
-        alert('User created successfully');
+      console.log(resJson);
+      if (resJson.result) {
+        // create new shortUrl
+        let newShortUrl: ShortUrl = {
+          originalLink: resJson.result.original_link,
+          shortUrl: resJson.result.full_short_link,
+          code: resJson.result.code
+        };
+        // push new short url to data store
+        setState({ shortUrls: [...state.shortUrls, newShortUrl] })
+        // TODO: update ui
+        console.log('Link created successfully', shortenerFormState);
       } else {
         alert('Some error occured');
       }
@@ -35,8 +57,8 @@ export function ShortenerForm() {
     }
   };
 
-  const fetchShortenedUrls = async () => {
-    // TODO: this needs to be stored locally (make sure to keep IDs)
+  const onSubmit = (data: ShortUrlRequest): void => {
+    createShortenedUrl(data);
   };
 
   return (
@@ -49,6 +71,7 @@ export function ShortenerForm() {
                 <Col md={9}>
                   <Form.Group>
                     <Form.Control id="url" placeholder="Shorten a link here..."
+                    // TODO: ADD VALIDATION TO MAKE SURE IT IS AN URL
                       {...register('url', { required: true, minLength: 10 })}
                       className="p-2 p-md-3 mb-3 mb-md-0" />
                       {errors.url?.type === 'required' && <div className="text-danger mt-3 mt-md-0">URL is required.</div>}
