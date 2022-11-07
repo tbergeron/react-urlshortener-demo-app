@@ -1,25 +1,9 @@
 .getting-started {
-  color: #9a9a9e;
-}
-
-.getting-started h1 {
-  color: #33313c;
-  font-size: 3em;
-  font-weight: bolder;
 }
 
 .getting-started p {
+  font-weight: 500;
 }
 
-
-.getting-started .btn {
-  background-color: #2bd1d0;
-  border-color: #2bd1d0;
-}
-
-.getting-started .btn:active,
-.getting-started .btn:focus,
-.getting-started .btn:hover {
-  background-color: #22a8a8;
-  border-color: #22a8a8;
+.getting-started img {
 }

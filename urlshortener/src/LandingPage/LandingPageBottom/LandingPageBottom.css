@@ -1,0 +1,66 @@
+@media (min-width: 576px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 1400px) {
+}
+
+.landing-page-bottom {
+  margin-top: -60px;
+  background-color: #f0f1f7;
+}
+
+.advanced-statistics h4 {
+  color: #33313c;
+  font-weight: 800;
+}
+
+.advanced-statistics p {
+  font-weight: 500;
+}
+
+.advanced-statistics .icon {
+  background-color: #3a3052;
+  width: 90px;
+  height: 90px;
+}
+
+.advanced-statistics .brand-recognition {
+}
+
+.advanced-statistics .detailed-records {
+}
+
+.advanced-statistics .fully-customizable {
+}
+
+.advanced-statistics .brand-recognition img {
+  margin-top: 22px;
+}
+
+.advanced-statistics .detailed-records img {
+  margin-top: 25px;
+}
+
+.advanced-statistics .fully-customizable img {
+  margin-top: 22px;
+}
+
+.advanced-statistics .advanced-statistics-column .icon {
+  margin: 0 auto;
+  margin-top: -65px;
+}
+
+.boost-your-links {
+  background-image: linear-gradient(rgba(56, 48, 82, 0.9), rgba(56, 48, 82, 0.9)), url('images/bg-boost-desktop.svg');
+  background-size: cover;
+  padding: 50px;
+}
+
+.boost-your-links h2 {
+  color: white;
+}

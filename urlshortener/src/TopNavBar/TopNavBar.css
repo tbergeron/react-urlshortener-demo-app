@@ -1,4 +1,5 @@
 .top-nav-bar {
+  background-color: white;
 }
 
 .top-nav-bar a.navbar-brand img {
@@ -10,15 +11,10 @@
   font-weight: bold;
 }
 
-.top-nav-bar a.btn-primary {
-  background-color: #2bd1d0;
-  border-color: #2bd1d0;
-  color: white;
+.top-nav-bar a.nav-link:hover {
+  color: #6b6a6a;
 }
 
-.top-nav-bar a.btn-primary:active,
-.top-nav-bar a.btn-primary:focus,
-.top-nav-bar a.btn-primary:hover {
-  background-color: #22a8a8;
-  border-color: #22a8a8;
+.top-nav-bar a.btn-primary {
+  color: white;
 }

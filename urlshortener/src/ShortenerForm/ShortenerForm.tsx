@@ -5,12 +5,12 @@ export function ShortenerForm() {
   return (
     <Container className="mt-5">
       <Row className="justify-content-md-center">
-        <Col lg={10} className="shortener-form rounded">
+        <Col className="shortener-form rounded">
           <Form>
             <Container>
               <Row className="">
                 <Col md={9}>
-                  <Form.Control id="name" placeholder="Shorten a link here..." className="p-3" />
+                  <Form.Control id="name" placeholder="Shorten a link here..." className="p-2 p-md-3 mb-3 mb-md-0" />
                 </Col>
                 <Col md={3}>
                   <Button variant="primary" size="lg" className="w-100 h-100 fw-bold">

@@ -1,5 +1,6 @@
 .shortener-form {
   background-image: linear-gradient(rgba(56, 48, 82, 0.9), rgba(56, 48, 82, 0.9)), url('images/bg-shorten-desktop.svg');
+  background-size: cover;
   color: white;
   padding: 30px;
 }

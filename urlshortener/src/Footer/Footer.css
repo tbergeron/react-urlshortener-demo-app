@@ -1,0 +1,22 @@
+.footer {
+  background-color: #242028;
+  color: white;
+}
+
+.footer .logo {
+  filter: invert(100%) sepia(0%) saturate(0%) brightness(118%) contrast(119%);
+  width: 100px;
+}
+
+.footer ul li {
+  margin-bottom: 10px;
+}
+
+.footer ul li a {
+  color: #9a9a9e;
+  text-decoration: none;
+}
+
+.footer ul li a:hover {
+  text-decoration: underline;
+}

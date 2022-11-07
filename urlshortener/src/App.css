@@ -1,0 +1,62 @@
+.container {
+  /* background-color: black; */
+}
+
+@media (min-width: 576px) {
+  .container {
+    /* background-color: blue; */
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    /* background-color: orange; */
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    /* background-color: green; */
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    /* background-color: red; */
+    max-width: 1100px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    /* background-color: pink; */
+  }
+}
+
+p {
+  color: #9a9a9e;
+}
+
+h1 {
+  color: #33313c;
+  font-size: 3em;
+  font-weight: 900;
+}
+
+h2 {
+  color: #33313c;
+  font-weight: bolder;
+}
+
+a.btn-primary {
+  background-color: #2bd1d0;
+  border-color: #2bd1d0;
+  color: white;
+}
+
+a.btn-primary:active,
+a.btn-primary:focus,
+a.btn-primary:hover {
+  background-color: #22a8a8 !important;
+  border-color: #22a8a8 !important;
+  color: white !important;
+}
