@@ -18,5 +18,9 @@
 }
 
 .footer ul li a:hover {
-  text-decoration: underline;
+  color: #2bd1d0;
+}
+
+.footer a.social:hover img {
+  filter: invert(0) sepia(1) saturate(14.5) hue-rotate(144deg) brightness(1.2);
 }

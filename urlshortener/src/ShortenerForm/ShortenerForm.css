@@ -5,8 +5,24 @@
   padding: 30px;
 }
 
-.shortener-form input {
-
+@media (min-width: 576px) {
+}
+@media (min-width: 768px) {
+  .shortener-form {
+    height: 118px;
+  }
+  .shortener-form button {
+    height: 60px !important;
+  }
+  .shortener-form .text-danger {
+    margin-top: 3px !important;
+  }
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}
+@media (min-width: 1400px) {
 }
 
 .shortener-form button {
@@ -17,6 +33,6 @@
 .shortener-form button:active,
 .shortener-form button:focus,
 .shortener-form button:hover {
-  background-color: #22a8a8 !important;
-  border-color: #22a8a8 !important;
+  background-color: #9be3e3 !important;
+  border-color: #9be3e3 !important;
 }
