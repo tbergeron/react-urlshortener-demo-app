@@ -8,8 +8,8 @@ export function LandingPageBottom() {
   return (
     <>
       <Container className="landing-page-bottom p-2 p-md-5 pt-5" fluid>
-        <Container className="text-center advanced-statistics pt-5">
-          <Row className="pt-5">
+        <Container className="text-center advanced-statistics">
+          <Row className="">
             <Col>
               <h1>Advanced Statistics</h1>
               <p className="mb-5">

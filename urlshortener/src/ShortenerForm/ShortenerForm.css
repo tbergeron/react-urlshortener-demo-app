@@ -1,3 +1,38 @@
+.shortened-urls-container {
+  margin-top: -60px;
+  background-color: #f0f1f7;
+}
+
+.shortened-urls-container .original-link a {
+  color: #4f4e55;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.shortened-urls-container .original-link a:hover,
+.shortened-urls-container .shortened-url a:hover {
+  text-decoration: underline;
+}
+
+.shortened-urls-container .shortened-url a {
+  color: #2bd1d0;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.shortened-urls-container .copy button {
+  margin-top: -7px;
+  background-color: #2bd1d0;
+  border-color: #2bd1d0;
+}
+
+.shortened-urls-container .copy button:active,
+.shortened-urls-container .copy button:focus,
+.shortened-urls-container .copy button:hover {
+  background-color: #3a3053;
+  border-color: #3a3053;
+}
+
 .shortener-form {
   background-image: linear-gradient(rgba(56, 48, 82, 0.9), rgba(56, 48, 82, 0.9)), url('images/bg-shorten-desktop.svg');
   background-size: cover;
