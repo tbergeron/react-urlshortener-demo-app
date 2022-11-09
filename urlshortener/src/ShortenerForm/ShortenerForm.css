@@ -71,3 +71,9 @@
   background-color: #9be3e3 !important;
   border-color: #9be3e3 !important;
 }
+
+.alert-hidden {
+  display: none;
+  /* opacity: 0; */
+  /* transition: all 250ms linear 2s; */
+}

@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { usePersistentStorageValue } from '../PersistentStorage';
 import './ShortenerForm.css';
 
@@ -62,6 +63,18 @@ export function ShortenerForm() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ShortUrlRequest>();
   const [state, setState] = usePersistentStorageValue('short-urls', shortenerState);
 
+  // alert management
+  const [isShowingAlert, setIsShowingAlert] = useState(false);
+  const [alertType, setAlertType] = useState('error');
+  const [alertMessage, setAlertMessage] = useState('');
+  const displayAlert = (alertType: string, alertMessage: string) => {
+    setIsShowingAlert(true);
+    setAlertType(alertType);
+    setAlertMessage(alertMessage);
+    // hide alert
+    setTimeout(() => setIsShowingAlert(false), 3000);
+  };
+
   console.log('initialState:', state);
 
   const createShortenedUrl = async (shortUrlRequest: ShortUrlRequest) => {
@@ -70,7 +83,12 @@ export function ShortenerForm() {
     console.log('Sending request to API:', shortUrlRequest);
     try {
 
-      // TODO: Message for when URL already exists?
+      // mssage for when URL already exists?
+      if (state.shortUrls.some((shortUrl) => shortUrl.originalLink === shortUrlRequest.url)) {
+        // error message on error
+        displayAlert('danger', 'URL already exists');
+        return false;
+      }
 
       let res = await fetch(buildUrl('shorten?url=' + shortUrlRequest.url));
       let resJson = await res.json();
@@ -85,18 +103,14 @@ export function ShortenerForm() {
         };
         // push new short url to data store
         setState({ shortUrls: [...state.shortUrls, newShortUrl] })
-        console.log('Link created successfully');
 
-        // Clear form field on success
+        // clear form field on success
         reset();
-
-        // TODO: Add confirmation message on success
-
+        // confirmation message on success
+        displayAlert('success', 'Link created successfully!');
       } else {
-        alert('Some error occured');
-
-        // TODO: Add error message on error
-
+        // error message on error
+        displayAlert('danger', 'Some error occured.');
       }
     } catch (err) {
       console.log(err);
@@ -148,6 +162,11 @@ export function ShortenerForm() {
       </Container>
       <Container fluid className="shortened-urls-container pt-5 p-4">
         <Container className="pt-4">
+          <Alert variant={alertType}
+            className={isShowingAlert ? 'alert-shown' : 'alert-hidden'}
+            onTransitionEnd={() => setIsShowingAlert(false)}>
+            {alertMessage}
+          </Alert>
           <ShortenedUrlList items={state.shortUrls} />
         </Container>
       </Container>
