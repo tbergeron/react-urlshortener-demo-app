@@ -23,26 +23,36 @@ type ShortUrl = {
   code: string;
 }
 
-function ShortenedUrlList(props: any) {
+interface ShortenedListProps {
+  displayAlert: Function;
+  items: Array<ShortUrl>;
+}
+
+function ShortenedUrlList(props: ShortenedListProps) {
   return (
     <>
       {props.items.map((item: ShortUrl) =>
-        <ShortenedUrlListItem key={item.code} item={item} />
+        <ShortenedUrlListItem key={item.code} item={item} displayAlert={props.displayAlert} />
       )}
     </>
   );
 }
 
-function ShortenedUrlListItem(props: any) {
+interface ShortenedListItemProps {
+  displayAlert: Function;
+  item: ShortUrl;
+}
+
+function ShortenedUrlListItem(props: ShortenedListItemProps) {
   const copyToClipboard = (event: React.MouseEvent<HTMLButtonElement>, item: ShortUrl) => {
     event.preventDefault();
     navigator.clipboard.writeText(item.shortUrl);
-    // TODO: Update UI for success
+    props.displayAlert('info', 'Copied to clipboard!');
   };
 
   return (
     <Row className="mt-2 mb-3 pt-3 p-2 bg-white rounded">
-      <Col md={5} className="original-link">
+      <Col md={5} className="original-link text-truncate">
         <a href={props.item.originalLink} target="_blank" rel="noreferrer">
           {props.item.originalLink}
         </a>
@@ -167,7 +177,7 @@ export function ShortenerForm() {
             onTransitionEnd={() => setIsShowingAlert(false)}>
             {alertMessage}
           </Alert>
-          <ShortenedUrlList items={state.shortUrls} />
+          <ShortenedUrlList items={state.shortUrls} displayAlert={displayAlert} />
         </Container>
       </Container>
     </>
