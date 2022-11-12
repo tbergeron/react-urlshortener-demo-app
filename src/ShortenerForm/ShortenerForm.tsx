@@ -74,15 +74,18 @@ export function ShortenerForm() {
   const [state, setState] = usePersistentStorageValue('short-urls', shortenerState);
 
   // alert management
+  const [fadeOutAlert, setFadeOutAlert] = useState(false);
   const [isShowingAlert, setIsShowingAlert] = useState(false);
   const [alertType, setAlertType] = useState('error');
   const [alertMessage, setAlertMessage] = useState('');
   const displayAlert = (alertType: string, alertMessage: string) => {
+    setFadeOutAlert(true);
     setIsShowingAlert(true);
     setAlertType(alertType);
     setAlertMessage(alertMessage);
-    // hide alert
-    setTimeout(() => setIsShowingAlert(false), 3000);
+    // fade out and hide alert
+    setTimeout(() => setFadeOutAlert(false), 1000);
+    setTimeout(() => setIsShowingAlert(false), 3500);
   };
 
   console.log('initialState:', state);
@@ -173,8 +176,11 @@ export function ShortenerForm() {
       <Container fluid className="shortened-urls-container pt-5 p-4">
         <Container className="pt-4">
           <Alert variant={alertType}
-            className={isShowingAlert ? 'alert-shown' : 'alert-hidden'}
-            onTransitionEnd={() => setIsShowingAlert(false)}>
+            className={
+              (isShowingAlert && fadeOutAlert) ? 'alert-shown' :
+              (isShowingAlert && !fadeOutAlert) ? 'alert-shown alert-fadeout' : 'alert-hidden'
+            }
+            onTransitionEnd={() => setFadeOutAlert(false)}>
             {alertMessage}
           </Alert>
           <ShortenedUrlList items={state.shortUrls} displayAlert={displayAlert} />
